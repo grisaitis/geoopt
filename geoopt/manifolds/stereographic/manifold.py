@@ -498,7 +498,7 @@ class Stereographic(Manifold):
         return geoopt.ManifoldTensor(self.expmap(mean, v / lambda_x), manifold=self)
 
     def origin(
-        self, *size, dtype=None, device=None, seed=42
+        self, *size, dtype=None, device=None
     ) -> "geoopt.ManifoldTensor":
         """
         Zero point origin.
@@ -511,13 +511,11 @@ class Stereographic(Manifold):
             the desired device
         dtype : torch.dtype
             the desired dtype
-        seed : int
-            ignored
 
         Returns
         -------
         ManifoldTensor
-            random point on the manifold
+            the origin of the manifold
         """
         return geoopt.ManifoldTensor(
             torch.zeros(*size, dtype=dtype, device=device), manifold=self
